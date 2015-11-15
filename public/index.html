@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Task List</title>
+      <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+      <link rel="stylesheet" href="/stylesheets/style.css">
+   </head>
+   <body class="app">
+      <nav class="navbar navbar-default">
+         <div class="navbar-header"></div>
+         <a href="/" class="navbar-brand">My Tasks</a>
+      </nav>
+      <form action="/completetask" method="post">
+         <table class="table table-striped table-bordered">
+            <tr>
+               <td>Name</td>
+               <td>Category</td>
+               <td>Date</td>
+               <td>Complete</td>
+            </tr>
+            <tr>
+               <td> </td>
+            </tr>
+         </table>
+         <button type="submit" class="btn">Update tasks</button>
+      </form>
+      <hr/>
+      <form action="/addtask" method="post" class="well">
+         <label>Item Name: </label>
+         <input name="item[name]" type="textbox"/>
+         <label>Item Category: </label>
+         <input name="item[category]" type="textbox"/><br/>
+         <button type="submit" class="btn">Add item</button>
+      </form>
+   </body>
+</html>

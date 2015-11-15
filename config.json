@@ -1,6 +1,6 @@
 {
-    "STORAGE_NAME": "silverhdinsightstorage",
-    "STORAGE_KEY": "XGMmfGL9VW5OgRccv0knLkQD6lLWNejcfZwZVTIvkbVALcGkxu2Crbt8cQ3yryBjuZNKbLgeUvhJr9Fcw2C7XQ==",
+    "STORAGE_NAME": "rttask21",
+    "STORAGE_KEY": "+o17FYyTfWokhqwL6V868/tUcGzYPiVxOfMuDZPVkWZE0PCdeNJCr0/ExWJbmOSeLVuuM2pq+jwOCGqJFnBYfg==",
     "PARTITION_KEY": "mytasks",
     "TABLE_NAME": "tasks"
 }
