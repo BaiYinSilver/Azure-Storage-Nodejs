@@ -1,30 +1,59 @@
 window.TaskList = window.TaskList || function(){ 
-	function RTTaskList (init_list) {
+	function TaskList (init_list) {
 		this.list = init_list;
 		
 	}
 
-	RTTaskList.prototype.addTask = function (){
+	TaskList.prototype.addTaskObj = function (task){
+		var list = readListFromLS();
+		task.id = Date.now();
+		list.push(task);
+		saveListToLS(list);
+	}
+
+	TaskList.prototype.delTaskId = function (){
 
 	}
 
-	RTTaskList.prototype.delTask = function (){
+	TaskList.prototype.updateTaskId = function (){
 
 	}
 
-	RTTaskList.prototype.updateTask = function (){
-
-	}
-
-	function saveListToLS(listObj){
-		localStorage.addItem('RTTaskList', JSON.stringify(listObj));
-	}
-
-	function readListFromLS () {
+	TaskList.prototype.getFullListArr = function(){
 		return JSON.parse(localStorage.getItem('RTTaskList'));
 	}
 
+	function saveListToLS(listArr){
+		var arrString = JSON.stringify(listArr);
+		localStorage.setItem('RTTaskList', arrString);
+	}
 
-	var instance = new RTTaskList ({});
+	function readListFromLS () {
+		var rawList = localStorage.getItem('RTTaskList');
+		if (rawList === null){
+			saveListToLS({});
+			return [];
+		} else {
+			return JSON.parse(rawList);
+		}
+	}
+
+	function getListLength (){
+		var list = readListFromLS();
+		if (list === null) {
+			return 0;
+		} else {
+			return list.length;
+		}
+	}
+
+	function getSingleTaskById (id) {
+		for(var i= 0; i < getListLength(); i++){
+			if(list[i].id === id) return list[i];
+		}
+	}
+
+
+	var instance = new TaskList ({});
 	return instance;
 }()
