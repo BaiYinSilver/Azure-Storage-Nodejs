@@ -33,6 +33,7 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/run', express.static(__dirname + '/public'));
+app.use('/task3', express.static(__dirname + '/public/task3'));
 
 // development only
 if ('development' == app.get('env')) {
