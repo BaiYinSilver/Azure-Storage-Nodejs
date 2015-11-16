@@ -18,8 +18,12 @@ window.TaskList = window.TaskList || function(){
 		saveListToLS(newList);
 	}
 
-	TaskList.prototype.updateTaskId = function (){
-
+	TaskList.prototype.updateTaskIdObj = function (id, newTask){
+		var targetTask = getSingleTaskById(id);
+		var list = readListFromLS();
+		newTask.id = id;
+		list[targetTask.index] = newTask;
+		saveListToLS(list);
 	}
 
 	TaskList.prototype.getFullListArr = function(){

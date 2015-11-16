@@ -9,29 +9,28 @@
    <body class="app">
       <nav class="navbar navbar-default">
          <div class="navbar-header"></div>
-         <a href="/" class="navbar-brand">My Tasks</a>
+         <a href="/" class="navbar-brand">Task List</a>
       </nav>
-      <form action="/completetask" method="post">
+      <div class="jumbotron">
          <table class="table table-striped table-bordered">
             <tr>
                <td>Name</td>
-               <td>Category</td>
-               <td>Date</td>
-               <td>Complete</td>
+               <td>Description</td>
             </tr>
-            <tr>
-               <td> </td>
+            <tr id="task">
+               <td id="task-name"> <input type="radio" data-id=""></td>
+               <td id="task-desc"> </td>
             </tr>
          </table>
          <button type="submit" class="btn">Update tasks</button>
-      </form>
+      </div>
       <hr/>
-      <form action="/addtask" method="post" class="well">
-         <label>Item Name: </label>
+      <div class="jumbotron">
+         <label>Task Name: </label>
          <input name="item[name]" type="textbox"/>
-         <label>Item Category: </label>
+         <label>Descrption: </label>
          <input name="item[category]" type="textbox"/><br/>
          <button type="submit" class="btn">Add item</button>
-      </form>
+      </div>
    </body>
 </html>
