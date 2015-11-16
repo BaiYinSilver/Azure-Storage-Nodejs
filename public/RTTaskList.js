@@ -1,7 +1,6 @@
 window.TaskList = window.TaskList || function(){ 
 	function TaskList (init_list) {
 		this.list = init_list;
-		
 	}
 
 	TaskList.prototype.addTaskObj = function (task){
@@ -11,8 +10,12 @@ window.TaskList = window.TaskList || function(){
 		saveListToLS(list);
 	}
 
-	TaskList.prototype.delTaskId = function (){
-
+	TaskList.prototype.delTaskId = function (id){
+		var targetTask = getSingleTaskById(id);
+		var list = readListFromLS();
+		delete list[targetTask.index];
+		var newList = list.slice(0,targetTask.index).concat(list.slice(targetTask.index +1, list.length));
+		saveListToLS(newList);
 	}
 
 	TaskList.prototype.updateTaskId = function (){
@@ -24,7 +27,7 @@ window.TaskList = window.TaskList || function(){
 	}
 
 	function saveListToLS(listArr){
-		var arrString = JSON.stringify(listArr);
+		var arrString = listArr === null ? [] : JSON.stringify(listArr);
 		localStorage.setItem('RTTaskList', arrString);
 	}
 
@@ -48,9 +51,15 @@ window.TaskList = window.TaskList || function(){
 	}
 
 	function getSingleTaskById (id) {
+		var taskObj = {};
+		var list = readListFromLS();
 		for(var i= 0; i < getListLength(); i++){
-			if(list[i].id === id) return list[i];
+			if(list[i].id === id) {
+				taskObj.task = list[i];
+				taskObj.index = i;
+			}
 		}
+		return taskObj;
 	}
 
 
