@@ -37,14 +37,12 @@
 		<input name="adddesc" type="textbox"/><br/>
 		<button class="btn">Add Task</button>
 	</div>
-	<script type="text/javascript">
-	document.onreadystatechange = function () {
-		if (state === 'complete') {
-			function populateList(){
-				
-			}
-		}
-	}
-	</script>
+	<div>
+		<h3>How to use in console:</h3>
+		<p>Add task: TaskList.addTaskObj({name:1,content:"111"})</p>
+		<p>Update task: TaskList.updateTaskIdObj(1447634203912,{name:4,content:"22"})</p>
+		<p>Delete task: TaskList.delTaskId(1447633883188)</p>
+		<p>Get full task list: TaskList.getFullListArr()</p>
+	</div>
    </body>
 </html>
