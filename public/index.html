@@ -18,19 +18,33 @@
                <td>Description</td>
             </tr>
             <tr id="task">
-               <td id="task-name"> <input type="radio" data-id=""></td>
+               <td id="task-name"> <input type="radio" data-id="" name="task"></td>
                <td id="task-desc"> </td>
             </tr>
          </table>
-         <button type="submit" class="btn">Update tasks</button>
-      </div>
-      <hr/>
-      <div class="jumbotron">
-         <label>Task Name: </label>
-         <input name="item[name]" type="textbox"/>
-         <label>Descrption: </label>
-         <input name="item[category]" type="textbox"/><br/>
-         <button type="submit" class="btn">Add item</button>
-      </div>
+
+		<label>Task Name: </label>
+		<input name="updatename" type="textbox"/>
+		<label>Descrption: </label>
+		<input name="updatedesc" type="textbox"/><br/>
+		<button class="btn">Update tasks</button>
+	</div>
+	<hr/>
+	<div class="jumbotron">
+		<label>Task Name: </label>
+		<input name="addtname" type="textbox"/>
+		<label>Descrption: </label>
+		<input name="adddesc" type="textbox"/><br/>
+		<button class="btn">Add Task</button>
+	</div>
+	<script type="text/javascript">
+	document.onreadystatechange = function () {
+		if (state === 'complete') {
+			function populateList(){
+				
+			}
+		}
+	}
+	</script>
    </body>
 </html>
