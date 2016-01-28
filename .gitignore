@@ -1,3 +1,5 @@
 node_modules
+experiment
 azure.err
 *.publishsettings
+config.json
