@@ -4,16 +4,18 @@ $(document).ready(function(){
 	var cw = 20, d, apple, score, snake_arr;
 	
     var imageUp = new Image()
-	imageUp.src = "up.png";
+	imageUp.src = "img/up.png";
 	var imageDown = new Image()
-	imageDown.src = "down.png";
+	imageDown.src = "img/down.png";
     var imageLeft = new Image()
-	imageLeft.src = "left.png";
+	imageLeft.src = "img/left.png";
 	var imageRight = new Image()
-	imageRight.src = "right.png";
+	imageRight.src = "img/right.png";
     
+    var img = new Image();
+    img.src = 'img/grass.jpg';
     
-	function create_snake() {
+	function createSnake() {
 		var init_length = 5;
         snake_arr = [];
 		for(var i = init_length-1; i>=0; i--) {
@@ -29,9 +31,6 @@ $(document).ready(function(){
 	}
 	
 	function paint() {
-        var img = new Image();
-        img.src = 'grass.jpg';
-        ctx.drawImage(img,0,0);
         
 		var headX = snake_arr[0].x;
 		var headY = snake_arr[0].y;
@@ -40,12 +39,15 @@ $(document).ready(function(){
 		else if(d == "up") headY--;
 		else if(d == "down") headY++;
 		
-		if(headX == -1 || headX == w/cw || headY == -1 || headY == h/cw || check_eat(headX, headY, snake_arr)) {
-			var dataURL = canvas.toDataURL();
-                $('.final-screenshot img').attr("src",dataURL);
+		if(headX == -1 || headX == w/cw || headY == -1 || headY == h/cw || checkEat(headX, headY, snake_arr)) {
+			clearInterval(game_loop);
+            var dataURL = canvas.toDataURL("image/jpg");
+            $('.final-screenshot img').attr("src",dataURL);
 			return;
 		}
 		
+        ctx.drawImage(img,0,0);
+        
 		if(headX == apple.x && headY == apple.y) {
 			var tail = {x: headX, y: headY, direction: d};
 			score++;
@@ -99,7 +101,7 @@ $(document).ready(function(){
         }
 	}
 	
-	function check_eat(x, y, array)
+	function checkEat(x, y, array)
 	{
 		for(var i = 0; i < array.length; i++)
 		{
@@ -149,12 +151,11 @@ $(document).ready(function(){
 	function init()
 	{
 		d = "right";
-		create_snake();
+		createSnake();
 		createApple();
         
 		score = 0;
-		
-		if(typeof game_loop != "undefined") clearInterval(game_loop);
+		//if(typeof game_loop != "undefined") clearInterval(game_loop);
 		game_loop = setInterval(paint, 100);
 	}
 	init();
