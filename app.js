@@ -15,7 +15,6 @@ var accountKey = nconf.get("STORAGE_KEY");
 
 var express = require('express');
 var routes = require('./routes');
-var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 
@@ -32,8 +31,6 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/task3-1', express.static(__dirname + '/public'));
-app.use('/task3-2', express.static(__dirname + '/public/task3'));
 
 // development only
 if ('development' == app.get('env')) {

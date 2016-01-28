@@ -1,48 +1,35 @@
-<!DOCTYPE html>
-<html>
-   <head>
-      <title>Task List</title>
-      <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
-      <link rel="stylesheet" href="stylesheets/style.css">
-      <script type="text/javascript" src="RTTaskList.js"></script>
-   </head>
-   <body class="app">
-      <nav class="navbar navbar-default">
-         <div class="navbar-header"></div>
-         <a href="/" class="navbar-brand">Task List</a>
-      </nav>
-      <div class="jumbotron">
-         <table class="table table-striped table-bordered">
-            <tr>
-               <td>Name</td>
-               <td>Description</td>
-            </tr>
-            <tr id="task">
-               <td id="task-name"> <input type="radio" data-id="" name="task"></td>
-               <td id="task-desc"> </td>
-            </tr>
-         </table>
-
-		<label>Task Name: </label>
-		<input name="updatename" type="textbox"/>
-		<label>Descrption: </label>
-		<input name="updatedesc" type="textbox"/><br/>
-		<button class="btn">Update tasks</button>
-	</div>
-	<hr/>
-	<div class="jumbotron">
-		<label>Task Name: </label>
-		<input name="addtname" type="textbox"/>
-		<label>Descrption: </label>
-		<input name="adddesc" type="textbox"/><br/>
-		<button class="btn">Add Task</button>
-	</div>
-	<div>
-		<h3>How to use in console:</h3>
-		<p>Add task: TaskList.addTaskObj({name:1,content:"111"})</p>
-		<p>Update task: TaskList.updateTaskIdObj(1447634203912,{name:4,content:"22"})</p>
-		<p>Delete task: TaskList.delTaskId(1447633883188)</p>
-		<p>Get full task list: TaskList.getFullListArr()</p>
-	</div>
-   </body>
+<html lang="en, es">
+    <head>
+        
+        <script src="jquery-1.12.0.min.js"></script>
+        <script src="polyglot.js"></script>
+        <script src="snake-game.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div class="game-view">
+            <canvas id="canvas" width="480" height="480"></canvas>
+        
+            <h3 class="score_box">
+                <span class="score_text"></span> 
+                <span class="score_num"></span>
+            </h3>
+            <p class="greetings_text"></p>
+            <div class="language-switch">
+                <span>
+                    <button class="en">English</button>
+                </span>
+                <span>
+                    <button class="es">Spanish</button>
+                </span>
+            </div>
+            <hr>
+            <span>
+                <button class="restart">Restart</button>
+            </span>
+            <div class="final-screenshot">
+                <img src="" alt="">
+            </div>
+        </div>
+    </body>
 </html>
