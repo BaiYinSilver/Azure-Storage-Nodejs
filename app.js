@@ -28,8 +28,7 @@ app.set('view engine', 'jade');
 
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/task3-1', express.static(__dirname + '/public'));
-app.use('/task3-2', express.static(__dirname + '/public/task3'));
+app.use('/game', express.static(__dirname + '/public'));
 
 
 var TaskList = require('./routes/tasklist');
