@@ -18,17 +18,18 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+var bodyParser = require('body-parser');
 
 var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
 
-
+bodyParser.json({limit: '500kb'});
+app.use(bodyParser.urlencoded({ extended: true, limit: '500kb' }));
 app.use(express.static(path.join(__dirname, 'public')));
-
+//app.set('views', path.join(__dirname, 'views'));
+//app.set('view engine', 'jade');
 
 var TaskList = require('./routes/tasklist');
 var Task = require('./models/task');

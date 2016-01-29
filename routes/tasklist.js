@@ -18,7 +18,8 @@ TaskList.prototype = {
   },
 
   addTask: function(req,res) {
-    var self = this      
+    var self = this;
+    console.log(req.body);
     var item = req.body.item;
     self.task.addItem(item, function itemAdded(error) {
       if(error) {

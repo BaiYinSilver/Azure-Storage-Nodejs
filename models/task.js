@@ -30,6 +30,7 @@ Task.prototype = {
   },
 
   addItem: function(item, callback) {
+    console.log(item);
     self = this;
     // use entityGenerator to set types
     // NOTE: RowKey must be a string type, even though

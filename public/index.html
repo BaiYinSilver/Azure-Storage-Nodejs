@@ -33,5 +33,12 @@
                 <button class="restart">Restart</button>
             </span>
         </div>
+        <form action="/addtask" method="post" class="well">
+            <label>Item Name: </label>
+            <input name="item[name]" type="textbox">
+            <label>Item Category: </label>
+            <input name="item[category]" type="textbox"><br>
+            <button type="submit" class="btn">Add item</button>
+        </form>
     </body>
 </html>

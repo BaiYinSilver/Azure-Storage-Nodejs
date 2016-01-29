@@ -31,7 +31,6 @@ $(document).ready(function(){
 	}
 	
 	function paint() {
-        
 		var headX = snake_arr[0].x;
 		var headY = snake_arr[0].y;
 		if(d == "right") headX++;
@@ -43,6 +42,7 @@ $(document).ready(function(){
 			clearInterval(game_loop);
             var dataURL = canvas.toDataURL("image/jpg");
             $('.final-screenshot img').attr("src",dataURL);
+            saveImage(dataURL);
 			return;
 		}
 		
@@ -81,7 +81,7 @@ $(document).ready(function(){
 	function drawCell(x, y, direction, swing) {
         switch(direction){
             case undefined:
-                ctx.fillStyle = "blue";
+                ctx.fillStyle = "red";
                 ctx.fillRect(x*cw, y*cw, cw, cw);
                 ctx.strokeStyle = "white";
                 ctx.strokeRect(x*cw, y*cw, cw, cw);
@@ -155,8 +155,21 @@ $(document).ready(function(){
 		createApple();
         
 		score = 0;
-		//if(typeof game_loop != "undefined") clearInterval(game_loop);
 		game_loop = setInterval(paint, 100);
 	}
 	init();
-})
+});
+
+var saveImage = function(imgString){
+    var jqxhr = $.post( "/addtask", 'item%5Bname%5D=222&item%5Bcategory%5D=233'+ imgString )
+    //var jqxhr = $.post( "/addtask", 'item%5Bname%5D=222&item%5Bcategory%5D=233' )
+    .done(function() {
+        alert( "second success" );
+    })
+    .fail(function() {
+        alert( "error" );
+    })
+    .always(function() {
+        alert( "finished" );
+    });
+}
