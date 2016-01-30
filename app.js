@@ -1,10 +1,7 @@
-
-/**
- * Module dependencies.
- */
-
 var azure = require('azure-storage');
 var nconf = require('nconf');
+var uuid = require('node-uuid');
+
 nconf.env()
      .file({ file: 'config.json'});
 var tableName = nconf.get("TABLE_NAME");
@@ -21,6 +18,11 @@ var path = require('path');
 var bodyParser = require('body-parser');
 
 var app = express();
+
+process.env.AZURE_STORAGE_ACCOUNT= "portalvhdsj3jbsdtnl15dr";
+process.env.AZURE_STORAGE_ACCESS_KEY = "yvTvyKONw71W5dgbxNHpqOS9hWzzBSps93Q2sGZyxUnNFv1WfimA+MVqOiyD+RresaR6ae2Dma4HozqHgPi6sw==";
+process.env.AZURE_STORAGE_CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=portalvhdsj3jbsdtnl15dr;AccountKey=yvTvyKONw71W5dgbxNHpqOS9hWzzBSps93Q2sGZyxUnNFv1WfimA+MVqOiyD+RresaR6ae2Dma4HozqHgPi6sw==";
+
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -40,6 +42,21 @@ app.get('/', taskList.showTasks.bind(taskList));
 app.post('/addtask', taskList.addTask.bind(taskList));
 app.post('/completetask', taskList.completeTask.bind(taskList));
 
+var retryOperations = new azure.ExponentialRetryPolicyFilter();
+var blobSvc = azure.createBlobService();
+blobSvc.createContainerIfNotExists('vhds', function(error, result, response){
+  if(!error){
+    // Container exists and allows
+    // anonymous read access to blob
+    // content and metadata within this container
+  }
+});
+blobSvc.createBlockBlobFromLocalFile('vhds', uuid(), 'gsv1.txt', function(error, result, response){
+  if(!error){
+    console.log(result); 
+    console.log(response);
+  }
+}); 
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
