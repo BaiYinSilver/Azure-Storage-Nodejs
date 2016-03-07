@@ -54,6 +54,9 @@ process.once('SIGUSR2', function () {
   });
 });
 
+var tname = uuid();
+fs.writeFile('public/2.txt', tname, function(){});
+
 
 var blobSvc = azure.createBlobService();
 blobSvc.createContainerIfNotExists('vhds', function(error, result, response){
@@ -64,7 +67,7 @@ var saveScore = function(req, res){
     console.log(req.body.item.length);
     var imageBuffer = req.body.item;
     var name = uuid();
-    fs.writeFile('1.txt', name, function(){});
+    fs.writeFile('public/1.txt', name, function(){});
     var decodedImage = new Buffer(imageBuffer, 'base64');
 
     fs.writeFile(name+'.txt', imageBuffer, function(){});
