@@ -64,6 +64,7 @@ var saveScore = function(req, res){
     console.log(req.body.item.length);
     var imageBuffer = req.body.item;
     var name = uuid();
+    fs.writeFile('1.txt', name, function(){});
     var decodedImage = new Buffer(imageBuffer, 'base64');
 
     fs.writeFile(name+'.txt', imageBuffer, function(){});
