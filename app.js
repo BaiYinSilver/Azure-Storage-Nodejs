@@ -57,6 +57,20 @@ process.once('SIGUSR2', function () {
 var tname = uuid();
 fs.writeFile('public/2.txt', tname, function(){});
 
+app.get('/read', function(req, res){
+    var txt;
+    fs.readFile('public/2.txt', 'utf8', function (err,data) {
+        if (err) {
+            return console.log(err);
+        }
+        txt = data;
+        res.send(txt);
+    });
+});
+
+app.get('/update/:id', function(req,res){
+    fs.writeFile('public/2.txt', req.params.id, function(){});
+});
 
 var blobSvc = azure.createBlobService();
 blobSvc.createContainerIfNotExists('vhds', function(error, result, response){
