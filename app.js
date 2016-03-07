@@ -20,6 +20,11 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
+process.env.AZURE_STORAGE_ACCOUNT= "portalvhdsj3jbsdtnl15dr";
+process.env.AZURE_STORAGE_ACCESS_KEY = "yvTvyKONw71W5dgbxNHpqOS9hWzzBSps93Q2sGZyxUnNFv1WfimA+MVqOiyD+RresaR6ae2Dma4HozqHgPi6sw==";
+process.env.AZURE_STORAGE_CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=portalvhdsj3jbsdtnl15dr;AccountKey=yvTvyKONw71W5dgbxNHpqOS9hWzzBSps93Q2sGZyxUnNFv1WfimA+MVqOiyD+RresaR6ae2Dma4HozqHgPi6sw==";
+
+
 // all environments
 app.set('port', process.env.PORT || 3000);
 
