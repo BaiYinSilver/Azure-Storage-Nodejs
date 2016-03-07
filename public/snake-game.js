@@ -40,7 +40,7 @@ $(document).ready(function(){
 		
 		if(headX == -1 || headX == w/cw || headY == -1 || headY == h/cw || checkEat(headX, headY, snake_arr)) {
 			clearInterval(game_loop);
-            var dataURL = canvas.toDataURL("image/jpg");
+            var dataURL = canvas.toDataURL("image/png");
             $('.final-screenshot img').attr("src",dataURL);
             saveImage(dataURL);
 			return;
@@ -161,6 +161,8 @@ $(document).ready(function(){
 });
 
 var saveImage = function(imgString){
+    //data:image/png;base64, is the start of png image
+    /*
     var jqxhr = $.post( "/addtask", 'item%5Bname%5D=222&item%5Bcategory%5D=233'+ imgString )
     //var jqxhr = $.post( "/addtask", 'item%5Bname%5D=222&item%5Bcategory%5D=233' )
     .done(function() {
@@ -172,4 +174,10 @@ var saveImage = function(imgString){
     .always(function() {
         alert( "finished" );
     });
+    */
+    var stream = {item: imgString.slice(22)};
+    var jqxhr = $.post( "/savescore", stream).done(function() {
+        alert( "savescore success" );
+    })
+    
 }

@@ -3,13 +3,12 @@ var fileService = azure.createFileService();
 
 module.exports = fileStorage;
 
-function fileStorage(){
-    this.storageClient
+function fileStorage(storageClient){
+    this.storageClient = storageClient;
+    this.storageClient.createShareIfNotExists('taskshare', function(error, result, response) {
+        if (!error) {
+            throw error;
+        }
+    });
 }
 
-fileService.createShareIfNotExists('taskshare', function(error, result, response) {
-  if (!error) {
-    // if result = true, share was created.
-    // if result = false, share already existed.
-  }
-});
